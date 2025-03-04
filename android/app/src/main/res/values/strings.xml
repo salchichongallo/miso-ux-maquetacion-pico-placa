@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Alarmas Pico Placa</string>
+    <string name="title_activity_main">Alarmas Pico Placa</string>
+    <string name="package_name">ux.alarmas.picoplaca</string>
+    <string name="custom_url_scheme">ux.alarmas.picoplaca</string>
+</resources>
