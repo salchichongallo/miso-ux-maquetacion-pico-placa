@@ -30,6 +30,58 @@
   src: url(./assets/fonts/urbanist//Urbanist-Medium.ttf) format('woff2');
 }
 
+:root {
+  --primary: #fbbc42;
+  --on-primary: #422c00;
+  --primary-container: #ffdeaa;
+  --on-primary-container: #271900;
+  --primary-fixed: #ffdeaa;
+  --on-primary-fixed: #271900;
+  --primary-fixed-dim: #fbbc42;
+  --on-primary-fixed-variant: #5f4100;
+  --secondary: #6d5c3f;
+  --on-secondary: #ffffff;
+  --secondary-container: #f8dfbb;
+  --on-secondary-container: #261904;
+  --secondary-fixed: #f8dfbb;
+  --on-secondary-fixed: #261904;
+  --secondary-fixed-dim: #dbc3a1;
+  --on-secondary-fixed-variant: #54442a;
+  --tertiary: #4e6543;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #d0ebc0;
+  --on-tertiary-container: #0c2006;
+  --tertiary-fixed: #d0ebc0;
+  --on-tertiary-fixed: #0c2006;
+  --on-tertiary-fixed-dim: #b4cea5;
+  --on-tertiary-fixed-variant: #364d2d;
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+  --outline: #807667;
+  --background: #fffbff;
+  --on-background: #1f1b16;
+  --surface: #fff8f3;
+  --on-surface: #422c00;
+  --surface-variant: #eee0cf;
+  --on-surface-variant: #4e4539;
+  --inverse-surface: #34302a;
+  --inverse-on-surface: #f8efe7;
+  --inverse-primary: #fbbc42;
+  --shadow: #000000;
+  --surface-tint: #7d5700;
+  --outline-variant: #d2c5b4;
+  --scrim: #000000;
+  --surface-container-highest: #eae1d9;
+  --surface-container-high: #efe7de;
+  --surface-container: #f5ece4;
+  --surface-container-low: #fbf2e9;
+  --surface-container-lowest: #ffffff;
+  --surface-bright: #fff8f3;
+  --surface-dim: #e1d9d0;
+}
+
 *,
 *::before,
 *::after {
@@ -42,6 +94,8 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   box-sizing: border-box;
+  background-color: var(--surface);
+  color: var(--on-surface);
 }
 
 h1,
