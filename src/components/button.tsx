@@ -1,10 +1,12 @@
 import clsx from 'clsx';
+import { IconType } from 'react-icons';
 import './button.css';
 
 type Props = {
   text: string;
   variant?: Variant;
   disabled?: boolean;
+  icon?: IconType;
 };
 
 enum Variants {
@@ -19,10 +21,26 @@ type AllProps = Props &
   Omit<React.ComponentPropsWithoutRef<'button'>, 'children'>;
 
 export function Button(props: AllProps) {
-  const { text, type = 'button', variant = Variants.primary } = props;
-  const classes = clsx('button', props.className, `button--variant-${variant}`);
+  const {
+    text,
+    icon: Icon,
+    type = 'button',
+    variant = Variants.primary,
+  } = props;
+  const hasIcon = !!Icon;
+  const classes = clsx(
+    'button',
+    props.className,
+    `button--variant-${variant}`,
+    {
+      'button--with-icon': hasIcon,
+    },
+  );
   return (
     <button {...props} type={type} className={classes}>
+      {hasIcon && (
+        <Icon size="1.5rem" color="currentColor" className="button__icon" />
+      )}
       <span className="button__text text--label-large">{text}</span>
     </button>
   );
