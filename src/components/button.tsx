@@ -10,6 +10,7 @@ type Props = {
 enum Variants {
   primary = 'primary',
   outlined = 'outlined',
+  inline = 'inline',
 }
 
 type Variant = keyof typeof Variants;
