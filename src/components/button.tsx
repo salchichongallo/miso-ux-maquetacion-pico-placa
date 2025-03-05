@@ -7,15 +7,18 @@ type Props = {
   disabled?: boolean;
 };
 
-enum Variant {
+enum Variants {
   primary = 'primary',
+  outlined = 'outlined',
 }
+
+type Variant = keyof typeof Variants;
 
 type AllProps = Props &
   Omit<React.ComponentPropsWithoutRef<'button'>, 'children'>;
 
 export function Button(props: AllProps) {
-  const { text, type = 'button', variant = Variant.primary } = props;
+  const { text, type = 'button', variant = Variants.primary } = props;
   const classes = clsx('button', props.className, `button--variant-${variant}`);
   return (
     <button {...props} type={type} className={classes}>
