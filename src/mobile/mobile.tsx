@@ -1,5 +1,5 @@
 import { MdAdd } from 'react-icons/md';
-import { Button } from '../components/button';
+import { Button } from '../components/button/button';
 
 export function Mobile() {
   return (
