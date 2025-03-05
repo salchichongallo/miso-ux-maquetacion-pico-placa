@@ -80,6 +80,9 @@
   --surface-container-lowest: #ffffff;
   --surface-bright: #fff8f3;
   --surface-dim: #e1d9d0;
+
+  --text-brand: 'Urbanist', sans-serif;
+  --text-plain: 'Poppins', sans-serif;
 }
 
 *,
@@ -91,19 +94,111 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
   box-sizing: border-box;
   background-color: var(--surface);
   color: var(--on-surface);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Urbanist', sans-serif;
+.text--display-large,
+.text--display-medium,
+.text--display-small,
+.text--headline-large,
+.text--headline-medium,
+.text--headline-small {
+  font-family: var(--text-brand);
   font-weight: 500;
+}
+
+.text--display-large {
+  font-size: 3.5625rem;
+  line-height: 4rem;
+}
+
+.text--display-medium {
+  font-size: 2.8125rem;
+  line-height: 3.25rem;
+}
+
+.text--display-small {
+  font-size: 2.25rem;
+  line-height: 2.75rem;
+}
+
+.text--headline-large {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.text--headline-medium {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+.text--headline-small {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text--title-large,
+.text--title-medium,
+.text--title-small,
+.text--label-large,
+.text--label-medium,
+.text--label-small {
+  font-family: var(--text-plain);
+  font-weight: 500;
+}
+
+.text--title-large {
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+}
+
+.text--title-medium {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.009375rem;
+}
+
+.text--title-small {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.00625rem;
+}
+
+.text--label-large {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text--label-medium {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text--label-small {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+}
+
+.text--body-large,
+.text--body-medium,
+.text--body-small {
+  font-family: var(--text-plain);
+  font-weight: 400;
+}
+
+.text--body-large {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text--body-medium {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text--body-small {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
