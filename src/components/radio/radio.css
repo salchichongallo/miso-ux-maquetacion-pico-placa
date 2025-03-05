@@ -1,0 +1,42 @@
+.radio {
+  display: flex;
+  align-items: center;
+}
+
+.radio__container {
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.radio__input {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  transition: 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.radio__input {
+  color: var(--on-surface-variant);
+}
+.radio--selected .radio__input {
+  color: var(--primary);
+}
+
+.radio--enabled .radio__container:hover .radio__input {
+  background-color: hsla(264deg, 8%, 12%, 0.08);
+}
+
+.radio--focused .radio__input,
+.radio--pressed .radio__input {
+  background-color: hsla(264deg, 8%, 12%, 0.12);
+}
+
+.radio--disabled .radio__container {
+  cursor: not-allowed;
+}
+.radio--disabled .radio__input {
+  color: hsla(264deg, 8%, 12%, 0.12);
+}
