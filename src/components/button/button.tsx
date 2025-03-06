@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { IconType } from 'react-icons';
+import { ButtonProps, Button as RAButton } from 'react-aria-components';
 import './button.css';
 
 type Props = {
@@ -17,8 +18,7 @@ enum Variants {
 
 type Variant = keyof typeof Variants;
 
-type AllProps = Props &
-  Omit<React.ComponentPropsWithoutRef<'button'>, 'children'>;
+type AllProps = Props & ButtonProps;
 
 export function Button({
   text,
@@ -37,11 +37,16 @@ export function Button({
     },
   );
   return (
-    <button {...restProps} type={type} className={classes}>
+    <RAButton
+      {...restProps}
+      type={type}
+      className={classes}
+      isDisabled={restProps.disabled || restProps.isDisabled}
+    >
       {hasIcon && (
         <Icon size="1.5rem" color="currentColor" className="button__icon" />
       )}
       <span className="button__text text--label-large">{text}</span>
-    </button>
+    </RAButton>
   );
 }
