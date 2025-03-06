@@ -1,0 +1,40 @@
+.text-field {
+  all: unset;
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--outline);
+  box-sizing: border-box;
+}
+
+.text-field__legend {
+  margin-left: 0.75rem;
+}
+
+.text-field__label {
+  padding: 0 0.25rem;
+  color: var(--on-surface-variant);
+}
+
+.text-field__input {
+  color: var(--on-surface);
+  padding: 1rem;
+  width: 100%;
+  margin-top: -0.75rem;
+}
+
+.text-field__input::placeholder {
+  color: currentColor;
+}
+
+.text-field--focused,
+.text-field--focused .text-field__label {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.text-field--focused {
+  border-width: 2px;
+  margin: -1px;
+}

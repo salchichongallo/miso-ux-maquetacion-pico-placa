@@ -110,6 +110,10 @@ body {
   color: var(--on-surface);
 }
 
+input {
+  all: unset;
+}
+
 .text--display-large,
 .text--display-medium,
 .text--display-small,
