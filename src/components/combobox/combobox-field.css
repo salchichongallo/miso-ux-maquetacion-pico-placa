@@ -1,0 +1,52 @@
+.combobox-field__wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.combobox-field {
+  all: unset;
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--outline);
+  box-sizing: border-box;
+}
+
+.combobox-field__legend {
+  margin-left: 0.75rem;
+}
+
+.combobox-field__label {
+  padding: 0 0.25rem;
+  color: var(--on-surface-variant);
+}
+
+.combobox-field__input {
+  color: var(--on-surface);
+  padding: 1rem 3rem 1rem 1rem;
+  width: 100%;
+  margin-top: -0.75rem;
+}
+
+.combobox-field__input::placeholder {
+  color: currentColor;
+}
+
+.react-aria-ComboBox {
+  &[data-focused] .combobox-field__label {
+    color: var(--primary);
+  }
+
+  &[data-focused] .combobox-field {
+    border-color: var(--primary);
+    border-width: 2px;
+    margin: -1px;
+  }
+}
+
+.combobox-field__trailing-icon {
+  position: absolute;
+  top: 1rem;
+  right: 0.25rem;
+}
