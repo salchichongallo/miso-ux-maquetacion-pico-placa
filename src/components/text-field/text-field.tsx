@@ -1,16 +1,19 @@
 import clsx from 'clsx';
-import { useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { AriaTextFieldProps, useFocus, useTextField } from 'react-aria';
 import './text-field.css';
 
 type Props = {
   label: string;
+  description: string;
+  errorMessage?: string;
+  isInvalid?: boolean;
 };
 
 type AllProps = Props & AriaTextFieldProps;
 
 export function TextField(props: AllProps) {
-  const { label } = props;
+  const { label, errorMessage } = props;
   const [isFocused, setFocused] = useState(false);
   const ref = useRef(null);
   const {
@@ -19,7 +22,6 @@ export function TextField(props: AllProps) {
     descriptionProps,
     errorMessageProps,
     isInvalid,
-    validationErrors,
   } = useTextField(props, ref);
   const { focusProps } = useFocus({
     onFocus: () => setFocused(true),
@@ -38,27 +40,35 @@ export function TextField(props: AllProps) {
   );
   const fieldClasses = clsx('text-field', {
     'text-field--focused': isFocused,
+    'text-field--invalid': isInvalid,
   });
 
+  const hasSupport = isInvalid || !!props.errorMessage;
+
   return (
-    <fieldset className={fieldClasses}>
-      <legend className="text-field__legend">
-        <label {...labelProps} className={labelClasses}>
-          {label}
-        </label>
-      </legend>
-      <input
-        {...inputProps}
-        {...focusProps}
-        ref={ref}
-        className={inputClasses}
-      />
-      {props.description && (
-        <div {...descriptionProps}>{props.description}</div>
+    <div className="text-field__wrapper">
+      <fieldset className={fieldClasses}>
+        <legend className="text-field__legend">
+          <label {...labelProps} className={labelClasses}>
+            {label}
+          </label>
+        </legend>
+        <input
+          {...inputProps}
+          {...focusProps}
+          ref={ref}
+          className={inputClasses}
+        />
+      </fieldset>
+      {hasSupport && (
+        <div className="text-field__supporting text--body-small">
+          {isInvalid ? (
+            <span {...errorMessageProps}>{errorMessage as ReactNode}</span>
+          ) : (
+            <span {...descriptionProps}>{props.description}</span>
+          )}
+        </div>
       )}
-      {isInvalid && (
-        <div {...errorMessageProps}>{validationErrors.join(' ')}</div>
-      )}
-    </fieldset>
+    </div>
   );
 }

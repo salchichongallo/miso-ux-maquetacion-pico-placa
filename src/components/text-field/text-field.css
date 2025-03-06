@@ -1,3 +1,7 @@
+.text-field__wrapper {
+  width: 100%;
+}
+
 .text-field {
   all: unset;
   position: relative;
@@ -37,4 +41,24 @@
 .text-field--focused {
   border-width: 2px;
   margin: -1px;
+}
+
+.text-field__supporting {
+  color: var(--on-surface-variant);
+  padding: 0.25rem 1rem 0 1rem;
+}
+
+.text-field--invalid + .text-field__supporting {
+  color: var(--error);
+}
+
+.text-field--invalid,
+.text-field--invalid .text-field__label {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.text-field--invalid {
+  border-width: 2px;
+  margin: initial !important;
 }
