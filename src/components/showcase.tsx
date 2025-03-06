@@ -1,9 +1,11 @@
 import { MdOutlineCancel, MdArrowBack, MdAdd } from 'react-icons/md';
+import { ListBoxItem } from 'react-aria-components';
 
 import { Button } from './button/button';
 import { RadioGroup, Radio } from './radio';
 import { TextField } from './text-field/text-field';
 import { IconButton } from './icon-button/icon-button';
+import { ComboBox } from './combobox/combobox';
 
 type Props = {
   title: string;
@@ -14,6 +16,16 @@ export function Showcase({ title }: Props) {
     <div style={{ padding: '1rem' }}>
       <h1 className="text--display-large">{title}</h1>
       <p>Listado de componentes:</p>
+      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+        <ComboBox label="Label" placeholder="Seleccionar">
+          <ListBoxItem>Aardvark</ListBoxItem>
+          <ListBoxItem>Cat</ListBoxItem>
+          <ListBoxItem>Dog</ListBoxItem>
+          <ListBoxItem>Kangaroo</ListBoxItem>
+          <ListBoxItem>Panda</ListBoxItem>
+          <ListBoxItem>Snake</ListBoxItem>
+        </ComboBox>
+      </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <TextField
           label="Label"
