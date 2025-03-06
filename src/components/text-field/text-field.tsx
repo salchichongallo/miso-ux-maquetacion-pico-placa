@@ -2,18 +2,21 @@ import clsx from 'clsx';
 import { ReactNode, useRef, useState } from 'react';
 import { AriaTextFieldProps, useFocus, useTextField } from 'react-aria';
 import './text-field.css';
+import { IconButton } from '../icon-button/icon-button';
+import { MdError } from 'react-icons/md';
 
 type Props = {
   label: string;
-  description: string;
+  description?: string;
   errorMessage?: string;
   isInvalid?: boolean;
+  trailingIcon?: ReactNode;
 };
 
 type AllProps = Props & AriaTextFieldProps;
 
 export function TextField(props: AllProps) {
-  const { label, errorMessage } = props;
+  const { label, errorMessage, trailingIcon, description } = props;
   const [isFocused, setFocused] = useState(false);
   const ref = useRef(null);
   const {
@@ -41,9 +44,16 @@ export function TextField(props: AllProps) {
   const fieldClasses = clsx('text-field', {
     'text-field--focused': isFocused,
     'text-field--invalid': isInvalid,
+    'text-field--with-trailing-icon': !!trailingIcon,
   });
 
-  const hasSupport = isInvalid || !!props.errorMessage;
+  const hasSupport = description || !!props.errorMessage;
+  const supportClasses = clsx('text-field__supporting text--body-small', {
+    'text-field__supporting--invalid': isInvalid,
+  });
+  const trailingClasses = clsx('text-field__trailing-icon', {
+    'text-field__trailing-icon--invalid': isInvalid,
+  });
 
   return (
     <div className="text-field__wrapper">
@@ -60,8 +70,17 @@ export function TextField(props: AllProps) {
           className={inputClasses}
         />
       </fieldset>
+      {(trailingIcon || isInvalid) && (
+        <div className={trailingClasses}>
+          {isInvalid ? (
+            <IconButton icon={MdError} color="var(--error)" />
+          ) : (
+            trailingIcon
+          )}
+        </div>
+      )}
       {hasSupport && (
-        <div className="text-field__supporting text--body-small">
+        <div className={supportClasses}>
           {isInvalid ? (
             <span {...errorMessageProps}>{errorMessage as ReactNode}</span>
           ) : (

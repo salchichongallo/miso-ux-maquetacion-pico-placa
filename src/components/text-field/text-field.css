@@ -1,5 +1,6 @@
 .text-field__wrapper {
   width: 100%;
+  position: relative;
 }
 
 .text-field {
@@ -48,8 +49,9 @@
   padding: 0.25rem 1rem 0 1rem;
 }
 
-.text-field--invalid + .text-field__supporting {
-  color: var(--error);
+.text-field__supporting--invalid,
+.text-field__trailing-icon--invalid {
+  color: var(--error) !important;
 }
 
 .text-field--invalid,
@@ -61,4 +63,14 @@
 .text-field--invalid {
   border-width: 2px;
   margin: initial !important;
+}
+
+.text-field__trailing-icon {
+  position: absolute;
+  top: 1rem;
+  right: 0.25rem;
+}
+
+.text-field--with-trailing-icon .text-field__input {
+  padding-right: 3rem;
 }
