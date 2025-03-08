@@ -1,0 +1,80 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  height: var(--visual-viewport-height);
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &[data-entering] {
+    animation: fade-in 300ms ease-out;
+  }
+
+  &[data-exiting] {
+    animation: fade-in 300ms reverse ease-out;
+  }
+}
+
+.modal__container {
+  margin: 1rem;
+
+  &[data-entering] {
+    animation: fade-in 300ms ease-out;
+  }
+
+  &[data-exiting] {
+    animation: fade-in 300ms reverse ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background-color: var(--surface-container-high);
+  outline: none;
+  max-height: inherit;
+  box-shadow: var(--elevation--5);
+  border-radius: 1rem;
+  min-width: 17.5rem;
+  max-width: 35rem;
+}
+
+.modal__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.modal__heading--has-icon {
+  align-items: center;
+}
+
+.modal__title {
+  color: var(--on-surface);
+}
+
+.modal__description {
+  color: var(--on-surface-variant);
+  width: 100%;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 0.5rem;
+}
+
+.modal__children {
+  padding: 1rem 1.5rem 0 1.5rem;
+}
