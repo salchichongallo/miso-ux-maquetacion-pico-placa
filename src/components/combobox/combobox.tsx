@@ -43,7 +43,10 @@ function ToggleIconButton() {
     <div className="combobox-field__trailing-icon">
       {state?.inputValue ? (
         <IconButton
-          onPress={() => state.setSelectedKey(null)}
+          onPress={() => {
+            state.setSelectedKey(null);
+            state.setInputValue('');
+          }}
           icon={MdOutlineCancel}
         />
       ) : (
