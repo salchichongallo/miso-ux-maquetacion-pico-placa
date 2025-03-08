@@ -1,4 +1,9 @@
-import { MdOutlineCancel, MdArrowBack, MdAdd } from 'react-icons/md';
+import {
+  MdOutlineCancel,
+  MdArrowBack,
+  MdAdd,
+  MdMobileFriendly,
+} from 'react-icons/md';
 import { ListBoxItem } from 'react-aria-components';
 
 import { Button } from './button/button';
@@ -6,6 +11,7 @@ import { RadioGroup, Radio } from './radio';
 import { TextField } from './text-field/text-field';
 import { IconButton } from './icon-button/icon-button';
 import { ComboBox } from './combobox/combobox';
+import { Modal } from './modal/modal';
 
 type Props = {
   title: string;
@@ -14,8 +20,31 @@ type Props = {
 export function Showcase({ title }: Props) {
   return (
     <div style={{ padding: '1rem' }}>
-      <h1 className="text--display-large">{title}</h1>
+      <h1 className="text--display-large" style={{ margin: 0, padding: 0 }}>
+        {title}
+      </h1>
       <p>Listado de componentes:</p>
+      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+        <Modal
+          title="Título del modal"
+          description="Texto de soporte para dar más contexto."
+          icon={MdMobileFriendly}
+          buttons={[
+            close => (
+              <Button onPress={close} text="Cancelar" variant="inline" />
+            ),
+            close => <Button onPress={close} text="Listo" />,
+          ]}
+        >
+          <ComboBox label="Día" placeholder="Seleccionar">
+            <ListBoxItem>Lunes</ListBoxItem>
+            <ListBoxItem>Martes</ListBoxItem>
+            <ListBoxItem>Miércoles</ListBoxItem>
+            <ListBoxItem>Jueves</ListBoxItem>
+            <ListBoxItem>Viernes</ListBoxItem>
+          </ComboBox>
+        </Modal>
+      </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <ComboBox label="Label" placeholder="Seleccionar">
           <ListBoxItem>Aardvark</ListBoxItem>
