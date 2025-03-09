@@ -5,31 +5,27 @@ import {
   Modal as RAModal,
   DateInput,
   TimeField as RATimeField,
+  Form,
 } from 'react-aria-components';
 import { useState } from 'react';
 import { Time } from '@internationalized/date';
+
 import { Button } from '../button/button';
 import { TimeSegments } from './time-segments';
 import './time-picker.css';
 
-type PlainTime = {
-  hour: number;
-  minute: number;
-};
-
 type OkParams = {
-  time: PlainTime;
-  close: () => unknown;
+  time: Time | null;
+  close: () => void;
 };
-type OkCallback = (params: OkParams) => unknown;
 
 type Props = {
   title: string;
   isDismissable?: boolean;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => unknown;
-  defaultTime?: { hour: number; minute: number };
-  onOk?: OkCallback;
+  initialTime: Time | null;
+  onOk: (params: OkParams) => void;
 };
 
 export function TimePicker({
@@ -37,63 +33,55 @@ export function TimePicker({
   isDismissable = true,
   isOpen,
   onOpenChange,
-  defaultTime,
+  initialTime,
   onOk,
 }: Props) {
-  const [time, setTime] = useState<Time | null>(() =>
-    defaultTime ? new Time(defaultTime.hour, defaultTime.minute) : null,
-  );
-
+  const [time, setTime] = useState<Time | null>(initialTime);
   return (
     <ModalOverlay
       isOpen={isOpen}
-      onOpenChange={onOpenChange}
       isDismissable={isDismissable}
+      onOpenChange={onOpenChange}
       isKeyboardDismissDisabled={!isDismissable}
       className="time-picker-overlay"
     >
       <RAModal className="time-picker__container">
         <Dialog role="alertdialog" className="time-picker">
-          {({ close }) => {
-            const onOkHandle = () =>
-              onOk
-                ? onOk({
-                    close,
-                    time: { hour: time!.hour, minute: time!.minute },
-                  })
-                : close();
-
-            return (
-              <>
-                <div className="time-picker__headline">
-                  <Heading
-                    slot="title"
-                    className="time-picker__title text--title-small"
-                  >
-                    {title}
-                  </Heading>
-                </div>
-                <div className="time-picker__input-selection">
-                  <RATimeField
-                    value={time}
-                    onChange={setTime}
-                    aria-label={title}
-                    name="time"
-                    shouldForceLeadingZeros
-                    autoFocus
-                  >
-                    <DateInput className="my-date-input">
-                      {segment => <TimeSegments segment={segment} />}
-                    </DateInput>
-                  </RATimeField>
-                </div>
-                <div className="time-picker__buttons">
-                  <Button onPress={close} text="Cancelar" variant="inline" />
-                  <Button onPress={onOkHandle} type="submit" text="Listo" />
-                </div>
-              </>
-            );
-          }}
+          {({ close }) => (
+            <Form
+              onSubmit={event => {
+                event.preventDefault();
+                onOk({ time, close });
+              }}
+            >
+              <div className="time-picker__headline">
+                <Heading
+                  slot="title"
+                  className="time-picker__title text--title-small"
+                >
+                  {title}
+                </Heading>
+              </div>
+              <div className="time-picker__input-selection">
+                <RATimeField
+                  value={time}
+                  onChange={setTime}
+                  aria-label={title}
+                  name="time"
+                  shouldForceLeadingZeros
+                  autoFocus
+                >
+                  <DateInput className="my-date-input">
+                    {segment => <TimeSegments segment={segment} />}
+                  </DateInput>
+                </RATimeField>
+              </div>
+              <div className="time-picker__buttons">
+                <Button onPress={close} text="Cancelar" variant="inline" />
+                <Button type="submit" text="Listo" />
+              </div>
+            </Form>
+          )}
         </Dialog>
       </RAModal>
     </ModalOverlay>
