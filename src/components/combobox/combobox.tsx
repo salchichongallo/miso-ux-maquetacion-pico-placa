@@ -5,10 +5,13 @@ import {
   Label,
   ComboBox as RAComboBox,
   ComboBoxStateContext,
+  Text,
 } from 'react-aria-components';
 import { useContext } from 'react';
-import { IconButton } from '../icon-button/icon-button';
 import { MdArrowDropDown, MdOutlineCancel } from 'react-icons/md';
+
+import { IconButton } from '../icon-button/icon-button';
+
 import './combobox.css';
 import './combobox-field.css';
 
@@ -16,9 +19,11 @@ type Props = {
   label: string;
   children: React.ReactNode;
   placeholder?: string;
+  description?: string;
 };
 
-export function ComboBox({ label, placeholder, children }: Props) {
+export function ComboBox({ label, placeholder, description, children }: Props) {
+  const hasSupport = !!description;
   return (
     <RAComboBox menuTrigger="focus">
       <div className="combobox-field__wrapper">
@@ -31,6 +36,14 @@ export function ComboBox({ label, placeholder, children }: Props) {
           <Input placeholder={placeholder} className="combobox-field__input" />
         </fieldset>
         <ToggleIconButton />
+        {hasSupport && (
+          <Text
+            slot="description"
+            className="text--body-small combobox__supporting"
+          >
+            {description}
+          </Text>
+        )}
       </div>
       <Popover offset={2}>
         <ListBox>{children}</ListBox>
