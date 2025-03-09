@@ -4,19 +4,12 @@ import { DialogTrigger, Link } from 'react-aria-components';
 import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
 import { TextField } from '../../../components/text-field/text-field';
-import { useNavigate } from 'react-router-dom';
 
-export function LoginPage() {
-  const navigate = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    navigate('/invalid-login');
-  };
+export function InvalidLoginPage() {
   return (
     <div className="flex items-center flex-col justify-center h-screen p-3">
       <h1 className="text--headline-large mb-8">PICO • PLACA</h1>
       <form
-        onSubmit={handleSubmit}
         className="p-8 pt-6 rounded-xl w-full flex flex-col gap-6"
         style={{
           maxWidth: '22.0625rem',
@@ -25,11 +18,16 @@ export function LoginPage() {
       >
         <h2 className="text--title-medium text-center">Login</h2>
         <div className="flex flex-col gap-6">
-          <TextField label="Usuario" placeholder="Ingresa tu usuario" />
+          <TextField
+            label="Usuario"
+            errorMessage="No puede estar vacío"
+            isInvalid
+          />
           <TextField
             label="Clave"
-            placeholder="Ingresa tu clave"
             type="password"
+            errorMessage="No puede estar vacío"
+            isInvalid
           />
         </div>
         <DialogTrigger>
