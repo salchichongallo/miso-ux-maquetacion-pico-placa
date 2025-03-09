@@ -24,7 +24,9 @@ export function ComboBox({ label, placeholder, children }: Props) {
       <div className="combobox-field__wrapper">
         <fieldset className="combobox-field">
           <legend className="combobox-field__legend">
-            <Label className="combobox-field__label">{label}</Label>
+            <Label className="combobox-field__label text--body-small">
+              {label}
+            </Label>
           </legend>
           <Input placeholder={placeholder} className="combobox-field__input" />
         </fieldset>
