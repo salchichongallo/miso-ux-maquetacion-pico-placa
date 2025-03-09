@@ -1,0 +1,174 @@
+.time-picker-overlay {
+  position: fixed;
+  inset: 0;
+  height: var(--visual-viewport-height);
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &[data-entering] {
+    animation: fade-in 300ms ease-out;
+  }
+
+  &[data-exiting] {
+    animation: fade-in 300ms reverse ease-out;
+  }
+}
+
+.time-picker__container {
+  margin: 1rem;
+
+  &[data-entering] {
+    animation: fade-in 300ms ease-out;
+  }
+
+  &[data-exiting] {
+    animation: fade-in 300ms reverse ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.time-picker {
+  background-color: var(--surface-bright);
+  outline: none;
+  max-height: inherit;
+  box-shadow: var(--elevation--5);
+  border-radius: 1rem;
+  min-width: 17.5rem;
+  max-width: 35rem;
+}
+
+.time-picker__headline {
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.time-picker__title {
+  color: var(--on-surface-variant);
+}
+
+.time-picker__input-selection {
+  padding: 1.25rem 1.5rem 0 1.5rem;
+}
+
+.time-picker__input-selection input {
+  /* Visually hidden */
+  border: 0px;
+  clip: rect(0px, 0px, 0px, 0px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0px;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.time-picker__buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  gap: 0.5rem;
+}
+
+.my-date-input {
+  display: flex;
+}
+
+.segment-input {
+  color: var(--on-secondary-container);
+  background: var(--surface-container-highest);
+  border: 2px solid transparent;
+  outline: none;
+  font-family: var(--text-brand);
+  font-size: 2.8125rem;
+  line-height: 3.25rem;
+  font-weight: 400;
+  border-radius: 0.5rem;
+  width: 6rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  caret-color: var(--primary);
+
+  &:focus {
+    background: var(--secondary-container);
+    border-color: var(--primary);
+  }
+}
+
+.my-date-input__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4375rem;
+}
+
+.segment-input__helper {
+  color: var(--on-surface-variant);
+}
+
+.segment-separator {
+  color: var(--on-surface);
+  font-family: var(--text-brand);
+  font-size: 3.5625rem;
+  line-height: 4rem;
+  width: 1.5rem;
+  text-align: center;
+  padding-left: 0.125rem;
+}
+
+.segment-day-period {
+  outline: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: 3.25rem;
+  height: 5rem;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  margin-left: 0.75rem;
+
+  &[data-focused] {
+    box-shadow: 0 0 0 2px var(--outline);
+  }
+}
+
+.segment-day-period__selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-container-high);
+  color: var(--on-surface-variant);
+  outline: none;
+}
+
+.segment-day-period__selector-am--selected,
+.segment-day-period__selector-pm--selected {
+  background: var(--tertiary-container);
+  color: var(--on-tertiary-container);
+}
+
+.segment-day-period[data-focused] .segment-day-period__selector-am {
+  box-shadow: 0 -1px 0 0px var(--outline) inset;
+}
+
+.segment-day-period[data-focused] .segment-day-period__selector-pm {
+  box-shadow: 0 1px 0 0px var(--outline) inset;
+}
+
+.segment-literal {
+  display: none;
+}
