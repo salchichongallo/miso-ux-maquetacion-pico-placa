@@ -3,8 +3,9 @@ import {
   MdArrowBack,
   MdAdd,
   MdMobileFriendly,
+  MdOutlineOpenInNew,
 } from 'react-icons/md';
-import { ListBoxItem } from 'react-aria-components';
+import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 
 import { Button } from './button/button';
 import { RadioGroup, Radio } from './radio';
@@ -25,25 +26,32 @@ export function Showcase({ title }: Props) {
       </h1>
       <p>Listado de componentes:</p>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-        <Modal
-          title="Título del modal"
-          description="Texto de soporte para dar más contexto."
-          icon={MdMobileFriendly}
-          buttons={[
-            close => (
-              <Button onPress={close} text="Cancelar" variant="inline" />
-            ),
-            close => <Button onPress={close} text="Listo" />,
-          ]}
-        >
-          <ComboBox label="Día" placeholder="Seleccionar">
-            <ListBoxItem>Lunes</ListBoxItem>
-            <ListBoxItem>Martes</ListBoxItem>
-            <ListBoxItem>Miércoles</ListBoxItem>
-            <ListBoxItem>Jueves</ListBoxItem>
-            <ListBoxItem>Viernes</ListBoxItem>
-          </ComboBox>
-        </Modal>
+        <DialogTrigger>
+          <Button
+            icon={MdOutlineOpenInNew}
+            text="Abrir modal"
+            variant="outlined"
+          />
+          <Modal
+            title="Título del modal"
+            description="Texto de soporte para dar más contexto."
+            icon={MdMobileFriendly}
+            buttons={[
+              close => (
+                <Button onPress={close} text="Cancelar" variant="inline" />
+              ),
+              close => <Button onPress={close} text="Listo" />,
+            ]}
+          >
+            <ComboBox label="Día" placeholder="Seleccionar">
+              <ListBoxItem>Lunes</ListBoxItem>
+              <ListBoxItem>Martes</ListBoxItem>
+              <ListBoxItem>Miércoles</ListBoxItem>
+              <ListBoxItem>Jueves</ListBoxItem>
+              <ListBoxItem>Viernes</ListBoxItem>
+            </ComboBox>
+          </Modal>
+        </DialogTrigger>
       </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <ComboBox label="Label" placeholder="Seleccionar">
