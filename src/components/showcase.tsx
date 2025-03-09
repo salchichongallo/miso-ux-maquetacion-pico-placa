@@ -4,6 +4,7 @@ import {
   MdAdd,
   MdMobileFriendly,
   MdOutlineOpenInNew,
+  MdOutlineSchedule,
 } from 'react-icons/md';
 import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 
@@ -13,6 +14,7 @@ import { TextField } from './text-field/text-field';
 import { IconButton } from './icon-button/icon-button';
 import { ComboBox } from './combobox/combobox';
 import { Modal } from './modal/modal';
+import { TimePicker } from './time-picker/time-picker';
 
 type Props = {
   title: string;
@@ -51,6 +53,17 @@ export function Showcase({ title }: Props) {
               <ListBoxItem>Viernes</ListBoxItem>
             </ComboBox>
           </Modal>
+        </DialogTrigger>
+        <DialogTrigger>
+          <Button
+            icon={MdOutlineSchedule}
+            text="Abrir TimePicker"
+            variant="outlined"
+          />
+          <TimePicker
+            title="Selecciona"
+            defaultTime={{ hour: 10, minute: 59 }}
+          />
         </DialogTrigger>
       </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
