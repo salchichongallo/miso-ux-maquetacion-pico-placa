@@ -14,7 +14,7 @@ export function LoginPage() {
   const formik = useFormik({
     initialValues: { username: '', password: '' },
     validateOnChange: true,
-    onSubmit: () => navigate('/showcase'),
+    onSubmit: () => navigate('/home'),
     validate: values => {
       const errors: Record<string, string> = {};
       if (!values.username) {
