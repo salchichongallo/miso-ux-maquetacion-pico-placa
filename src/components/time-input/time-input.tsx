@@ -14,11 +14,13 @@ type Props = {
   label: string;
   placeholder?: string;
   defaultTime?: PlainTime;
+  pickerTitle: string;
 };
 
 export function TimeInput({
   label,
   defaultTime,
+  pickerTitle,
   placeholder = 'Seleccionar',
 }: Props) {
   const [isOpen, setOpen] = useState(false);
@@ -36,7 +38,7 @@ export function TimeInput({
       isReadOnly
       trailingIcon={
         <TimePicker
-          title="Selecciona"
+          title={pickerTitle}
           isOpen={isOpen}
           onOpenChange={setOpen}
           initialTime={time}

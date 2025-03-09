@@ -27,7 +27,11 @@ export function Showcase({ title }: Props) {
       </h1>
       <p>Listado de componentes:</p>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-        <TimeInput label="Hora inicio" defaultTime={{ hour: 10, minute: 15 }} />
+        <TimeInput
+          label="Hora inicio"
+          pickerTitle="Selecciona"
+          defaultTime={{ hour: 10, minute: 15 }}
+        />
       </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <DialogTrigger>
