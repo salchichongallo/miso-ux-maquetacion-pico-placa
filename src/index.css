@@ -118,7 +118,8 @@ body {
   overscroll-behavior-y: contain;
 }
 
-input {
+input,
+button {
   all: unset;
 }
 
