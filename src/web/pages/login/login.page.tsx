@@ -1,4 +1,7 @@
-import { MdArrowForward } from 'react-icons/md';
+import { MdArrowForward, MdDone } from 'react-icons/md';
+import { DialogTrigger, Link } from 'react-aria-components';
+
+import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
 import { TextField } from '../../../components/text-field/text-field';
 
@@ -22,9 +25,20 @@ export function LoginPage() {
             type="password"
           />
         </div>
-        <a href="#" className="text-center underline text--body-medium">
-          ¿Olvidaste tu clave?
-        </a>
+        <DialogTrigger>
+          <Link
+            href="#"
+            className="text-center underline text--body-medium outline-none"
+          >
+            ¿Olvidaste tu clave?
+          </Link>
+          <Modal
+            description="Se ha enviado un correo con instrucciones para restablecer tu contraseña."
+            icon={MdDone}
+            buttons={[close => <Button onPress={close} text="Listo" />]}
+            style={{ maxWidth: '19.5rem' }}
+          />
+        </DialogTrigger>
         <Button type="submit" text="Ingresar" icon={MdArrowForward} />
       </form>
     </div>
