@@ -4,6 +4,8 @@ import {
   MdAdd,
   MdMobileFriendly,
   MdOutlineOpenInNew,
+  MdEdit,
+  MdOutlineDelete,
 } from 'react-icons/md';
 import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 
@@ -14,6 +16,7 @@ import { IconButton } from './icon-button/icon-button';
 import { ComboBox } from './combobox/combobox';
 import { Modal } from './modal/modal';
 import { TimeInput } from './time-input/time-input';
+import { LeadingAction } from './modal/leading-action';
 
 type Props = {
   title: string;
@@ -60,6 +63,50 @@ export function Showcase({ title }: Props) {
             </ComboBox>
           </Modal>
         </DialogTrigger>
+        <DialogTrigger>
+          <Button icon={MdEdit} text="Editar día" variant="outlined" />
+          <Modal
+            title="Editar día"
+            buttons={[
+              close => (
+                <LeadingAction>
+                  <IconButton onPress={close} icon={MdOutlineDelete} />
+                </LeadingAction>
+              ),
+              close => (
+                <Button onPress={close} text="Cancelar" variant="inline" />
+              ),
+              close => <Button onPress={close} text="Listo" />,
+            ]}
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+              }}
+            >
+              <ComboBox label="Día" placeholder="Seleccionar">
+                <ListBoxItem>Lunes</ListBoxItem>
+                <ListBoxItem>Martes</ListBoxItem>
+                <ListBoxItem>Miércoles</ListBoxItem>
+                <ListBoxItem>Jueves</ListBoxItem>
+                <ListBoxItem>Viernes</ListBoxItem>
+              </ComboBox>
+              <ComboBox
+                label="Dígitos"
+                placeholder="Seleccionar"
+                description="Separados por coma"
+              >
+                <ListBoxItem>1, 2</ListBoxItem>
+                <ListBoxItem>3, 4</ListBoxItem>
+                <ListBoxItem>5, 6</ListBoxItem>
+                <ListBoxItem>7, 9</ListBoxItem>
+                <ListBoxItem>9, 0</ListBoxItem>
+              </ComboBox>
+            </div>
+          </Modal>
+        </DialogTrigger>
       </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <ComboBox label="Label" placeholder="Seleccionar">
@@ -97,7 +144,7 @@ export function Showcase({ title }: Props) {
           <Radio value="cats">Cat</Radio>
           <Radio value="dragon">Dragon</Radio>
           <Radio isDisabled value="orni">
-            Ortinorrinco
+            Ornitorrinco
           </Radio>
         </RadioGroup>
       </div>
