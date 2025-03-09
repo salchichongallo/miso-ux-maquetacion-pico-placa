@@ -66,6 +66,7 @@
 .modal__description {
   color: var(--on-surface-variant);
   width: 100%;
+  text-align: center;
 }
 
 .modal__buttons {

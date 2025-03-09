@@ -12,7 +12,7 @@ import './modal.css';
 type ActionButton = (close: () => unknown) => JSX.Element;
 
 type Props = {
-  title: string;
+  title?: string;
   description?: string;
   icon?: IconType;
   isDismissable?: boolean;
@@ -20,6 +20,8 @@ type Props = {
   children?: React.ReactNode;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => unknown;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export function Modal({
@@ -31,6 +33,8 @@ export function Modal({
   isDismissable = true,
   isOpen,
   onOpenChange,
+  className,
+  style,
 }: Props) {
   const hasIcon = !!Icon;
   return (
@@ -42,7 +46,11 @@ export function Modal({
       onOpenChange={onOpenChange}
     >
       <RAModal className="modal__container">
-        <Dialog role="alertdialog" className="modal">
+        <Dialog
+          role="alertdialog"
+          className={clsx('modal', className)}
+          style={style}
+        >
           {({ close }) => (
             <>
               <div
@@ -51,13 +59,23 @@ export function Modal({
                 })}
               >
                 {Icon && <Icon size="1.5rem" />}
-                <Heading
-                  slot="title"
-                  className="modal__title text--headline-small"
-                >
-                  {title}
-                </Heading>
-                {description && (
+                {title && (
+                  <Heading
+                    slot="title"
+                    className="modal__title text--headline-small"
+                  >
+                    {title}
+                  </Heading>
+                )}
+                {!title && (
+                  <Heading
+                    slot="title"
+                    className="modal__description text--body-medium"
+                  >
+                    {description}
+                  </Heading>
+                )}
+                {title && description && (
                   <p className="modal__description text--body-medium">
                     {description}
                   </p>
