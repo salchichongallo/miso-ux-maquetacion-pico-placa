@@ -1,9 +1,14 @@
 import clsx from 'clsx';
-import { ReactNode, useRef, useState } from 'react';
-import { AriaTextFieldProps, useFocus, useTextField } from 'react-aria';
-import './text-field.css';
-import { IconButton } from '../icon-button/icon-button';
 import { MdError } from 'react-icons/md';
+import { ReactNode, useRef, useState } from 'react';
+import {
+  AriaTextFieldProps,
+  mergeProps,
+  useFocus,
+  useTextField,
+} from 'react-aria';
+import { IconButton } from '../icon-button/icon-button';
+import './text-field.css';
 
 type Props = {
   label: string;
@@ -11,6 +16,7 @@ type Props = {
   errorMessage?: string;
   isInvalid?: boolean;
   trailingIcon?: ReactNode;
+  onClick?: () => void;
 };
 
 type AllProps = Props & AriaTextFieldProps;
@@ -26,10 +32,15 @@ export function TextField(props: AllProps) {
     errorMessageProps,
     isInvalid,
   } = useTextField(props, ref);
-  const { focusProps } = useFocus({
-    onFocus: () => setFocused(true),
-    onBlur: () => setFocused(false),
-  });
+  const { focusProps } = useFocus(
+    mergeProps(
+      {
+        onFocus: () => setFocused(true),
+        onBlur: () => setFocused(false),
+      },
+      { onFocus: props.onFocus },
+    ),
+  );
 
   const labelClasses = clsx(
     'text-field__label',
@@ -64,8 +75,7 @@ export function TextField(props: AllProps) {
           </label>
         </legend>
         <input
-          {...inputProps}
-          {...focusProps}
+          {...mergeProps(inputProps, focusProps, { onClick: props.onClick })}
           ref={ref}
           className={inputClasses}
         />
