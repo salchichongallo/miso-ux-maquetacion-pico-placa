@@ -5,7 +5,7 @@ import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 import { AppLogo } from '../../components/app-logo';
 import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
-import { Divider } from '../../components/divider/divider';
+import { Divider } from '../../../components/divider/divider';
 import { ComboBox } from '../../../components/combobox/combobox';
 import { TimeInput } from '../../../components/time-input/time-input';
 import { TextField } from '../../../components/text-field/text-field';
