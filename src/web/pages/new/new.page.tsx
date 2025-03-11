@@ -1,7 +1,9 @@
-import { MdArrowBack, MdToday } from 'react-icons/md';
-import { ListBoxItem } from 'react-aria-components';
+import { useNavigate } from 'react-router-dom';
+import { MdArrowBack, MdError, MdToday } from 'react-icons/md';
+import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 
 import { AppLogo } from '../../components/app-logo';
+import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
 import { Divider } from '../../components/divider/divider';
 import { ComboBox } from '../../../components/combobox/combobox';
@@ -10,6 +12,7 @@ import { TextField } from '../../../components/text-field/text-field';
 import { IconButton } from '../../../components/icon-button/icon-button';
 
 export function NewPage() {
+  const navigate = useNavigate();
   return (
     <div className="pt-6 pb-8">
       <div className="w-full mx-auto" style={{ maxWidth: '34.5rem' }}>
@@ -21,7 +24,28 @@ export function NewPage() {
           style={{ background: 'var(--surface-container-low)' }}
         >
           <div className="pt-6 pr-8 pb-6 pl-6 flex gap-2 items-start">
-            <IconButton icon={MdArrowBack} />
+            <DialogTrigger>
+              <IconButton icon={MdArrowBack} />
+              <Modal
+                title="¿Desea salir?"
+                description="Perderá su progreso."
+                icon={MdError}
+                buttons={[
+                  close => (
+                    <Button onPress={close} text="Cancelar" variant="inline" />
+                  ),
+                  close => (
+                    <Button
+                      text="Salir"
+                      onPress={() => {
+                        close();
+                        navigate(-1);
+                      }}
+                    />
+                  ),
+                ]}
+              />
+            </DialogTrigger>
             <div>
               <h1 className="text--title-large">Nuevo pico y placa</h1>
               <p className="text--body-medium mt-1">
