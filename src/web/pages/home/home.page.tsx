@@ -1,5 +1,5 @@
 import { MdAdd } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { AppLogo } from '../../components/app-logo';
 import { Button } from '../../../components/button/button';
@@ -7,14 +7,17 @@ import { Button } from '../../../components/button/button';
 import { CityItem } from './city-item/city-item';
 
 export function HomePage() {
+  const navigate = useNavigate();
   return (
     <div className="pt-6 pb-8">
       <div className="w-full mx-auto" style={{ maxWidth: '34.5rem' }}>
         <header className="flex justify-between items-center px-8 py-6">
           <AppLogo />
-          <Link to="/nuevo-pico-placa">
-            <Button icon={MdAdd} text="Nuevo pico y placa" />
-          </Link>
+          <Button
+            onPress={() => navigate('/nuevo-pico-placa')}
+            icon={MdAdd}
+            text="Nuevo pico y placa"
+          />
         </header>
         <main
           className="flex flex-col gap-6 rounded-2xl py-6 px-8"
