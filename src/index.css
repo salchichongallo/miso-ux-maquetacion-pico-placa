@@ -155,7 +155,6 @@ button {
   line-height: 2rem;
 }
 
-.text--title-large,
 .text--title-medium,
 .text--title-small,
 .text--label-large,
@@ -168,6 +167,7 @@ button {
 .text--title-large {
   font-size: 1.375rem;
   line-height: 1.75rem;
+  font-weight: 400;
 }
 
 .text--title-medium {
