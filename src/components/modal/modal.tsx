@@ -58,7 +58,7 @@ export function Modal({
                   'modal__heading--has-icon': hasIcon,
                 })}
               >
-                {Icon && <Icon size="1.5rem" />}
+                {Icon && <Icon size="1.5rem" color="var(--secondary)" />}
                 {title && (
                   <Heading
                     slot="title"
