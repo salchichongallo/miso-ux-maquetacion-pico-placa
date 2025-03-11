@@ -19,7 +19,7 @@ export function DayPeriodGroup({ segment }: DayPeriodGroupProps) {
     ref.current!.contentEditable = 'false';
   }, []);
 
-  const isAm = segment.text === 'AM';
+  const isAm = segment.text === 'a. m.';
 
   const changeToAm = () => state.setSegment('dayPeriod', 0);
   const changeToPm = () => state.setSegment('dayPeriod', 12);
