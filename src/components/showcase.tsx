@@ -17,6 +17,8 @@ import { ComboBox } from './combobox/combobox';
 import { Modal } from './modal/modal';
 import { TimeInput } from './time-input/time-input';
 import { LeadingAction } from './modal/leading-action';
+import { DatePicker } from './date-picker/date-picker';
+import { CalendarDate } from '@internationalized/date';
 
 type Props = {
   title: string;
@@ -29,6 +31,12 @@ export function Showcase({ title }: Props) {
         {title}
       </h1>
       <p>Listado de componentes:</p>
+      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+        <DatePicker
+          label="Vigente desde"
+          defaultValue={new CalendarDate(2025, 1, 1)}
+        />
+      </div>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <TimeInput
           label="Hora inicio"
