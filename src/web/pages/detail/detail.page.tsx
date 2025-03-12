@@ -27,7 +27,11 @@ export function DetailPage() {
             <div className="flex-1">
               <h1 className="text--title-large">Detalles del pico y placa</h1>
             </div>
-            <Button text="Editar" icon={MdEdit} />
+            <Button
+              onPress={() => navigate('/editar')}
+              text="Editar"
+              icon={MdEdit}
+            />
           </div>
           <div className="px-8 pb-8 flex flex-col gap-6">
             <LabelField label="Ciudad" text="Medellín - Área Metropolitana" />
