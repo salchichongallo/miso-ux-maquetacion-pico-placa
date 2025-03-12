@@ -66,8 +66,9 @@ function ToggleIconButton() {
   const state = useContext(ComboBoxStateContext);
   return (
     <div className="combobox-field__trailing-icon">
-      {state?.inputValue ? (
+      {state?.inputValue && state?.isOpen ? (
         <IconButton
+          key="clear"
           onPress={() => {
             state.setSelectedKey(null);
             state.setInputValue('');
@@ -75,7 +76,7 @@ function ToggleIconButton() {
           icon={MdOutlineCancel}
         />
       ) : (
-        <IconButton icon={MdArrowDropDown} />
+        <IconButton key="dropdown" icon={MdArrowDropDown} />
       )}
     </div>
   );
