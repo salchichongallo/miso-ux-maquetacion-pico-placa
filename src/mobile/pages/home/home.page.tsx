@@ -1,13 +1,14 @@
+import { AppHeader } from '../../components/app-header';
+import { AppShell } from '../../components/app-shell/app-shell';
 import { Divider } from '../../../components/divider/divider';
 import { LabelField } from '../../../web/pages/detail/label-field';
-import { AppHeader } from '../../components/app-header';
 
 import { CarStatusCard } from './car-status-card';
 import { Plate, Separator, WeekInfo } from './week-info';
 
 export function HomePage() {
   return (
-    <div>
+    <AppShell>
       <AppHeader />
       <div className="flex flex-col gap-6 p-4">
         <CarStatusCard />
@@ -44,6 +45,6 @@ export function HomePage() {
           </div>
         </WeekInfo>
       </div>
-    </div>
+    </AppShell>
   );
 }
