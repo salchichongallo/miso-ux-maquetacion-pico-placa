@@ -32,7 +32,7 @@ export function NewPage() {
           className="flex flex-col rounded-2xl"
           style={{ background: 'var(--surface-container-low)' }}
         >
-          <div className="pt-6 pr-8 pb-6 pl-6 flex gap-2 items-start">
+          <div className="pt-6 pr-8 pb-6 pl-4 flex gap-2 items-start">
             <DialogTrigger>
               <IconButton icon={MdArrowBack} />
               <PreventNavigateModal />
