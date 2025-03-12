@@ -10,6 +10,7 @@
   padding: 0.375rem 0.75rem;
   color: var(--on-surface-variant);
   display: inline-flex;
+  align-items: center;
   gap: 0.5rem;
   transition: 200ms cubic-bezier(0.2, 0, 0, 1);
   cursor: default;
@@ -27,4 +28,5 @@
 
 .chip--icon {
   cursor: pointer;
+  padding-right: 0.5rem;
 }
