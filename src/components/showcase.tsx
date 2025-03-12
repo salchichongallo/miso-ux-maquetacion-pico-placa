@@ -19,6 +19,7 @@ import { TimeInput } from './time-input/time-input';
 import { LeadingAction } from './modal/leading-action';
 import { DatePicker } from './date-picker/date-picker';
 import { CalendarDate } from '@internationalized/date';
+import { Chip, Chips } from './chip';
 
 type Props = {
   title: string;
@@ -32,6 +33,14 @@ export function Showcase({ title }: Props) {
       </h1>
       <p>Listado de componentes:</p>
       <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+        <Chips>
+          <Chip text="Label" />
+          <Chip text="Lunes: 3 y 4" />
+          <Chip text="Label" icon={MdEdit} />
+          <Chip text="Agregar" icon={MdAdd} />
+        </Chips>
+      </div>
+      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
         <DatePicker
           label="Vigente desde"
           defaultValue={new CalendarDate(2025, 1, 1)}
@@ -44,7 +53,14 @@ export function Showcase({ title }: Props) {
           defaultTime={{ hour: 10, minute: 15 }}
         />
       </div>
-      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+      <div
+        style={{
+          marginTop: '1rem',
+          display: 'flex',
+          gap: '1rem',
+          alignItems: 'center',
+        }}
+      >
         <DialogTrigger>
           <Button
             icon={MdOutlineOpenInNew}
@@ -72,7 +88,8 @@ export function Showcase({ title }: Props) {
           </Modal>
         </DialogTrigger>
         <DialogTrigger>
-          <Button icon={MdEdit} text="Editar día" variant="outlined" />
+          {/* <Button icon={MdEdit} text="Editar día" variant="outlined" /> */}
+          <Chip text="Editar día" icon={MdEdit} />
           <Modal
             title="Editar día"
             buttons={[
