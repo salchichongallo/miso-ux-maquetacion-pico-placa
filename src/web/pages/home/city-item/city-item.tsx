@@ -11,7 +11,7 @@ export function CityItem({ city, description }: Props) {
   return (
     <li>
       <Link
-        to="#"
+        to="/detalle"
         className="city-item flex items-center rounded-xl cursor-pointer py-2 pl-4 pr-6"
       >
         <div className="w-full py-1.5">
