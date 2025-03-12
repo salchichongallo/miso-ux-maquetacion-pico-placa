@@ -1,4 +1,4 @@
-import { MdArrowBack, MdToday } from 'react-icons/md';
+import { MdArrowBack } from 'react-icons/md';
 import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 
 import { AppLogo } from '../../components/app-logo';
@@ -6,9 +6,11 @@ import { Button } from '../../../components/button/button';
 import { Divider } from '../../../components/divider/divider';
 import { ComboBox } from '../../../components/combobox/combobox';
 import { TimeInput } from '../../../components/time-input/time-input';
-import { TextField } from '../../../components/text-field/text-field';
 import { IconButton } from '../../../components/icon-button/icon-button';
 import { PreventNavigateModal } from '../../components/prevent-navigate-modal';
+import { DatePicker } from '../../../components/date-picker/date-picker';
+
+import { AddChips } from './add-chips';
 
 export function NewPage() {
   return (
@@ -59,18 +61,9 @@ export function NewPage() {
               <TimeInput label="Hora fin" pickerTitle="Seleccionar" />
             </div>
 
-            <TextField
-              label="Vigente desde"
-              placeholder="Seleccionar"
-              trailingIcon={
-                <IconButton
-                  onPress={() => alert('TODO: open date picker')}
-                  icon={MdToday}
-                />
-              }
-            />
+            <DatePicker label="Vigente desde" value={null} />
 
-            {/* TODO: add digits field */}
+            <AddChips />
 
             <div className="pt-6 pb-8 flex items-center justify-center">
               <Button isDisabled type="submit" text="Crear pico y placa" />
