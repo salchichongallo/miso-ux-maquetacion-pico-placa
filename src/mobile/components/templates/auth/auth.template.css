@@ -1,0 +1,12 @@
+.auth-template {
+  height: 100dvh;
+  background-image: url(../../../../assets/img/background-pattern.png);
+  background-position: bottom left;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-size: auto 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

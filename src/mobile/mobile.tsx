@@ -1,5 +1,12 @@
-import { Showcase } from '../components/showcase';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { LoginPage } from './pages/login/login.page';
 
 export function Mobile() {
-  return <Showcase title="Mobile - Alarmas Pico Placa" />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
