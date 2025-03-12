@@ -22,6 +22,7 @@ type Props = {
   onOpenChange?: (isOpen: boolean) => unknown;
   className?: string;
   style?: React.CSSProperties;
+  alignTitle?: 'center' | 'left' | 'right';
 };
 
 export function Modal({
@@ -35,6 +36,7 @@ export function Modal({
   onOpenChange,
   className,
   style,
+  alignTitle = 'center',
 }: Props) {
   const hasIcon = !!Icon;
   return (
@@ -63,6 +65,7 @@ export function Modal({
                   <Heading
                     slot="title"
                     className="modal__title text--headline-small"
+                    style={{ textAlign: alignTitle }}
                   >
                     {title}
                   </Heading>
