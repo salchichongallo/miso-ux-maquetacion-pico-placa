@@ -44,7 +44,7 @@ export function Button({
       isDisabled={restProps.disabled || restProps.isDisabled}
     >
       {hasIcon && (
-        <Icon size="1.5rem" color="currentColor" className="button__icon" />
+        <Icon size="1.125rem" color="currentColor" className="button__icon" />
       )}
       <span className="button__text text--label-large">{text}</span>
     </RAButton>
