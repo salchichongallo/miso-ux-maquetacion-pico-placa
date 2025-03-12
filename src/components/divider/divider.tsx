@@ -1,5 +1,3 @@
-import clsx from 'clsx';
-
 type Props = {
   className?: string;
 };
@@ -9,8 +7,13 @@ export function Divider({ className }: Props) {
     <div
       role="separator"
       aria-orientation="horizontal"
-      className={clsx('block h-0.25 shrink-0', className)}
-      style={{ background: 'var(--outline-variant)' }}
+      className={className}
+      style={{
+        background: 'var(--outline-variant)',
+        display: 'block',
+        height: 1,
+        flexShrink: 0,
+      }}
     />
   );
 }
