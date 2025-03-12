@@ -1,4 +1,5 @@
 import { MdCheck } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { DialogTrigger } from 'react-aria-components';
 
 import { Modal } from '../../../components/modal/modal';
@@ -10,6 +11,7 @@ import { AuthTemplate } from '../../components/templates/auth/auth.template';
 import onboardingMedia from '../../../assets/img/illustrations/onboarding-media.svg';
 
 export function LoginPage() {
+  const navigate = useNavigate();
   return (
     <AuthTemplate>
       <div className="flex flex-col items-center">
@@ -41,7 +43,14 @@ export function LoginPage() {
               <Modal
                 title="Registro exitoso"
                 icon={MdCheck}
-                buttons={[close => <Button onPress={close} text="Continuar" />]}
+                buttons={[
+                  () => (
+                    <Button
+                      onPress={() => navigate('bienvenida')}
+                      text="Continuar"
+                    />
+                  ),
+                ]}
               />
             </DialogTrigger>
           </div>
