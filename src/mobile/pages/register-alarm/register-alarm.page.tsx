@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MdCheck } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
@@ -11,6 +12,7 @@ import { StartingDaySelector } from './starting-day-selector';
 import { NotificationTypesSelector } from './notification-types-selector';
 
 export function RegisterAlarmPage() {
+  const navigate = useNavigate();
   const [opened, setOpened] = useState(false);
   const [modal, setModal] = useState<string>(null!);
   return (
@@ -77,7 +79,7 @@ export function RegisterAlarmPage() {
             buttons={[
               () => (
                 <Button
-                  onPress={() => alert('TODO: redirect')}
+                  onPress={() => navigate('/alarmas/mis-alarmas')}
                   text="Continuar"
                 />
               ),

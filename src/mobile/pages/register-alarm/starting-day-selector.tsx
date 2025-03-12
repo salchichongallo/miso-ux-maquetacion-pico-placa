@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { Radio, RadioGroup } from '../../../components/radio';
-import { TimePicker } from '../../../components/time-picker/time-picker';
+import { MdCheck } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+
 import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
-import { MdCheck } from 'react-icons/md';
+import { Radio, RadioGroup } from '../../../components/radio';
+import { TimePicker } from '../../../components/time-picker/time-picker';
 
 export function StartingDaySelector() {
+  const navigate = useNavigate();
+
   const [day, setDay] = useState<string>(null!);
   const [confirming, setConfirming] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
@@ -70,7 +74,10 @@ export function StartingDaySelector() {
         style={{ maxWidth: '19.5rem' }}
         buttons={[
           () => (
-            <Button onPress={() => alert('TODO: redirect')} text="Continuar" />
+            <Button
+              onPress={() => navigate('/alarmas/mis-alarmas')}
+              text="Continuar"
+            />
           ),
         ]}
       />
