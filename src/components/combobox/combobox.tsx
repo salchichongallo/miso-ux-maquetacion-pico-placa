@@ -20,7 +20,7 @@ import './combobox-field.css';
 interface AllProps<T extends object>
   extends Omit<ComboBoxProps<T>, 'children'> {
   label: string;
-  children: React.ReactNode;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
   placeholder?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
