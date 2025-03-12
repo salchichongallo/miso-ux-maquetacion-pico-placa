@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { MdCheck } from 'react-icons/md';
 
-import { AppShell } from '../../components/app-shell/app-shell';
-
 import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
+import { AppShell } from '../../components/app-shell/app-shell';
 import { TimePicker } from '../../../components/time-picker/time-picker';
 
 import { VehicleSelector } from './vehicle-selector';
+import { StartingDaySelector } from './starting-day-selector';
 import { NotificationTypesSelector } from './notification-types-selector';
 
 export function RegisterAlarmPage() {
@@ -33,6 +33,11 @@ export function RegisterAlarmPage() {
                   setOpened(true);
                 }}
               />
+              {modal === 'start-of-week' && (
+                <div className="pl-2">
+                  <StartingDaySelector />
+                </div>
+              )}
             </div>
           </main>
           <TimePicker
@@ -71,13 +76,17 @@ export function RegisterAlarmPage() {
             style={{ maxWidth: '19.5rem' }}
             buttons={[
               () => (
-                <Button onPress={() => alert('TODO: redirect')} text="Sí" />
+                <Button
+                  onPress={() => alert('TODO: redirect')}
+                  text="Continuar"
+                />
               ),
             ]}
           />
           <TimePicker
             title="Indica un tiempo"
             isOpen={opened && modal === 'before-begin'}
+            // TODO: hide am/pm and change labels
             initialTime={null}
             onOpenChange={isOpen => {
               if (!isOpen) {
