@@ -23,14 +23,6 @@ export function AddChips() {
         Dígitos
       </div>
       <Chips>
-        <DialogTrigger>
-          <Chip text="Agregar" icon={MdAdd} />
-          <DayModal
-            title="Agregar día"
-            onDelete={handleDelete}
-            onDone={handleDone}
-          />
-        </DialogTrigger>
         {chips.map(item => (
           <Chip
             key={item.id}
@@ -39,6 +31,14 @@ export function AddChips() {
             onPress={() => handleDelete(item)}
           />
         ))}
+        <DialogTrigger>
+          <Chip text="Agregar" icon={MdAdd} />
+          <DayModal
+            title="Agregar día"
+            onDelete={handleDelete}
+            onDone={handleDone}
+          />
+        </DialogTrigger>
       </Chips>
     </div>
   );
