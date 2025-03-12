@@ -10,7 +10,12 @@ import {
 import { useRef, useState } from 'react';
 import { MdToday } from 'react-icons/md';
 import { useDatePickerState } from 'react-stately';
-import { useDateFormatter, useDatePicker, usePress } from 'react-aria';
+import {
+  Placement,
+  useDateFormatter,
+  useDatePicker,
+  usePress,
+} from 'react-aria';
 import { CalendarDate, getLocalTimeZone, today } from '@internationalized/date';
 
 import { Button } from '../button/button';
@@ -28,11 +33,15 @@ interface DatePickerProps<T extends DateValue> extends RADatePickerProps<T> {
   placeholder?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
+  shouldFlip?: boolean;
+  placement?: Placement;
 }
 
 export function DatePicker<T extends DateValue>({
   label,
   placeholder,
+  shouldFlip = true,
+  placement = 'bottom start',
   ...props
 }: DatePickerProps<T>) {
   const formatter = useDateFormatter({
@@ -94,12 +103,11 @@ export function DatePicker<T extends DateValue>({
       <Popover
         isOpen={state.isOpen}
         triggerRef={ref}
-        shouldFlip
+        shouldFlip={shouldFlip}
         shouldUpdatePosition
-        placement="bottom start"
+        placement={placement}
         className="date-picker__popover"
-        isNonModal
-        shouldCloseOnInteractOutside={() => true}
+        offset={2}
       >
         <Dialog
           {...dialogProps}
