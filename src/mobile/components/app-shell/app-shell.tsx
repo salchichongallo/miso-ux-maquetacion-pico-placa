@@ -9,11 +9,12 @@ import { NavigationItem } from '../navigation-bar/navigation-item';
 
 type Props = {
   children: React.ReactNode;
+  className?: string;
 };
 
-export function AppShell({ children }: Props) {
+export function AppShell({ children, className }: Props) {
   return (
-    <div style={{ paddingBottom: '5rem' }}>
+    <div style={{ paddingBottom: '5rem' }} className={className}>
       {children}
       <div style={{ position: 'fixed', bottom: 0, width: '100%' }}>
         <NavigationBar>
