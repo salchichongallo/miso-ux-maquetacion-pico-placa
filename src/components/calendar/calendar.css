@@ -1,0 +1,55 @@
+.pp-calendar {
+  width: fit-content;
+  max-width: 100%;
+  color: var(--on-surface);
+}
+
+.pp-calendar-header-cell {
+  width: 3rem;
+  height: 3rem;
+}
+
+.pp-calendar-cell {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: default;
+  outline: none;
+  forced-color-adjust: none;
+  color: var(--on-surface);
+}
+
+.pp-calendar-cell__content {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  transition: 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.pp-calendar-cell:hover .pp-calendar-cell__content {
+  background-color: hsla(264deg, 8%, 12%, 0.08);
+}
+
+.pp-calendar-cell[data-focus-visible] .pp-calendar-cell__content {
+  background-color: hsla(264deg, 8%, 12%, 0.12);
+}
+
+.pp-calendar-cell[data-selected] .pp-calendar-cell__content {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.pp-calendar-cell--today .pp-calendar-cell__content {
+  box-shadow: 0 0 0 1px var(--primary) inset;
+}
+
+.pp-calendar-cell[data-outside-month] {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
