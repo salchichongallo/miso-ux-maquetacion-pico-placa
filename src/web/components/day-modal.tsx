@@ -30,6 +30,7 @@ export function DayModal({ title, day, onCancel, onDelete, onDone }: Props) {
   return (
     <Modal
       title={title}
+      style={{ maxWidth: '19.5rem' }}
       buttons={[
         close => (
           <LeadingAction>

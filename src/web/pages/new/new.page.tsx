@@ -1,7 +1,10 @@
-import { MdArrowBack } from 'react-icons/md';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MdArrowBack, MdCheck, MdError } from 'react-icons/md';
 import { DialogTrigger, ListBoxItem } from 'react-aria-components';
 
 import { AppLogo } from '../../components/app-logo';
+import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
 import { Divider } from '../../../components/divider/divider';
 import { ComboBox } from '../../../components/combobox/combobox';
@@ -13,6 +16,9 @@ import { DatePicker } from '../../../components/date-picker/date-picker';
 import { AddChips } from './add-chips';
 
 export function NewPage() {
+  const navigate = useNavigate();
+  const [created, setCreated] = useState(false);
+
   return (
     <div className="pt-6 pb-8">
       <div className="w-full mx-auto" style={{ maxWidth: '34.5rem' }}>
@@ -66,9 +72,42 @@ export function NewPage() {
             <AddChips />
 
             <div className="pt-6 pb-8 flex items-center justify-center">
-              <Button isDisabled type="submit" text="Crear pico y placa" />
+              <DialogTrigger>
+                <Button text="Crear pico y placa" />
+                <Modal
+                  title="¿Está seguro de crear el pico y placa?"
+                  style={{ maxWidth: '19.5rem' }}
+                  icon={MdError}
+                  buttons={[
+                    close => (
+                      <Button
+                        onPress={close}
+                        text="Cancelar"
+                        variant="inline"
+                      />
+                    ),
+                    close => (
+                      <Button
+                        text="Crear"
+                        onPress={() => {
+                          setCreated(true);
+                          close();
+                        }}
+                      />
+                    ),
+                  ]}
+                />
+              </DialogTrigger>
             </div>
           </form>
+          <Modal
+            isOpen={created}
+            title="¡Pico y placa creado!"
+            icon={MdCheck}
+            buttons={[
+              () => <Button text="Listo" onPress={() => navigate('/home')} />,
+            ]}
+          />
         </main>
       </div>
     </div>
