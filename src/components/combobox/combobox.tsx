@@ -6,6 +6,8 @@ import {
   ComboBox as RAComboBox,
   ComboBoxStateContext,
   Text,
+  ComboBoxProps,
+  ValidationResult,
 } from 'react-aria-components';
 import { useContext } from 'react';
 import { MdArrowDropDown, MdOutlineCancel } from 'react-icons/md';
@@ -15,24 +17,25 @@ import { IconButton } from '../icon-button/icon-button';
 import './combobox.css';
 import './combobox-field.css';
 
-type Props = {
+interface AllProps<T extends object>
+  extends Omit<ComboBoxProps<T>, 'children'> {
   label: string;
   children: React.ReactNode;
   placeholder?: string;
   description?: string;
-  defaultInputValue?: string;
-};
+  errorMessage?: string | ((validation: ValidationResult) => string);
+}
 
-export function ComboBox({
+export function ComboBox<T extends object>({
   label,
   placeholder,
   description,
-  defaultInputValue,
   children,
-}: Props) {
+  ...props
+}: AllProps<T>) {
   const hasSupport = !!description;
   return (
-    <RAComboBox defaultInputValue={defaultInputValue} menuTrigger="focus">
+    <RAComboBox {...props} menuTrigger="focus">
       <div className="combobox-field__wrapper">
         <fieldset className="combobox-field">
           <legend className="combobox-field__legend">
