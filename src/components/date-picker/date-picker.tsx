@@ -4,6 +4,8 @@ import {
   DateValue,
   ValidationResult,
   DatePickerProps as RADatePickerProps,
+  Label,
+  Input,
 } from 'react-aria-components';
 import { useRef, useState } from 'react';
 import { MdToday } from 'react-icons/md';
@@ -18,12 +20,21 @@ import { IconButton } from '../icon-button/icon-button';
 import { YearHeader } from './year-header';
 import { MonthHeader } from './month-header';
 
+import './date-picker.css';
+import clsx from 'clsx';
+
 interface DatePickerProps<T extends DateValue> extends RADatePickerProps<T> {
+  label: string;
+  placeholder?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
-export function DatePicker<T extends DateValue>(props: DatePickerProps<T>) {
+export function DatePicker<T extends DateValue>({
+  label,
+  placeholder,
+  ...props
+}: DatePickerProps<T>) {
   const formatter = useDateFormatter({
     year: 'numeric',
     month: 'long',
@@ -31,10 +42,13 @@ export function DatePicker<T extends DateValue>(props: DatePickerProps<T>) {
   });
   const state = useDatePickerState(props);
   const ref = useRef<HTMLDivElement>(null);
-  const [value, setValue] = useState(() => today(getLocalTimeZone()));
+  const [value, setValue] = useState<CalendarDate>(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (props.defaultValue as any) || today(getLocalTimeZone()),
+  );
   const { dialogProps, calendarProps } = useDatePicker(props, state, ref);
 
-  const { pressProps } = usePress({ onPress: () => state.toggle() });
+  const { pressProps } = usePress({ onPress: state.toggle });
 
   const onCancel = () => {
     if (state.dateValue) {
@@ -53,17 +67,40 @@ export function DatePicker<T extends DateValue>(props: DatePickerProps<T>) {
 
   return (
     <div style={{ width: '100%' }}>
-      <div ref={ref} style={{ display: 'flex', width: '100%' }}>
-        <input
-          {...pressProps}
-          readOnly
-          value={valueString}
-          placeholder="Seleccionar"
-          style={{ width: '100%' }}
-        />
-        <IconButton onPress={state.toggle} icon={MdToday} />
+      <div ref={ref} className="date-picker-field__wrapper">
+        <fieldset
+          className={clsx('date-picker-field', {
+            'date-picker-field--focused': state.isOpen,
+          })}
+        >
+          <legend className="date-picker-field__legend">
+            <Label className="date-picker-field__label text--body-small">
+              {label}
+            </Label>
+          </legend>
+          <Input
+            {...pressProps}
+            readOnly
+            value={valueString}
+            placeholder={placeholder}
+            className="date-picker-field__input"
+          />
+        </fieldset>
+        <div className="date-picker-field__trailing-icon">
+          <IconButton onPress={state.toggle} icon={MdToday} />
+        </div>
       </div>
-      <Popover isOpen={state.isOpen} triggerRef={ref} placement="bottom start">
+
+      <Popover
+        isOpen={state.isOpen}
+        triggerRef={ref}
+        shouldFlip
+        shouldUpdatePosition
+        placement="bottom start"
+        className="date-picker__popover"
+        isNonModal
+        shouldCloseOnInteractOutside={() => true}
+      >
         <Dialog
           {...dialogProps}
           style={{
@@ -74,7 +111,7 @@ export function DatePicker<T extends DateValue>(props: DatePickerProps<T>) {
         >
           <div
             className="flex justify-between text--label-large"
-            style={{ height: '4rem', width: '100%' }}
+            style={{ height: '4rem', width: '100%', padding: '0 0.75rem' }}
           >
             <MonthHeader value={value} setValue={setValue} />
             <YearHeader value={value} setValue={setValue} />
