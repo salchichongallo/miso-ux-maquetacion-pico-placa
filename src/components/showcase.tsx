@@ -62,7 +62,7 @@ export function Showcase({ title }: Props) {
               close => <Button onPress={close} text="Listo" />,
             ]}
           >
-            <ComboBox label="Día" placeholder="Seleccionar">
+            <ComboBox label="Días" placeholder="Seleccionar">
               <ListBoxItem>Lunes</ListBoxItem>
               <ListBoxItem>Martes</ListBoxItem>
               <ListBoxItem>Miércoles</ListBoxItem>
@@ -94,7 +94,11 @@ export function Showcase({ title }: Props) {
                 gap: '1.5rem',
               }}
             >
-              <ComboBox label="Día" placeholder="Seleccionar">
+              <ComboBox
+                defaultInputValue="Lunes"
+                label="Día"
+                placeholder="Seleccionar"
+              >
                 <ListBoxItem>Lunes</ListBoxItem>
                 <ListBoxItem>Martes</ListBoxItem>
                 <ListBoxItem>Miércoles</ListBoxItem>

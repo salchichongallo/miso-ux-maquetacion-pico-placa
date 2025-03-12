@@ -20,12 +20,19 @@ type Props = {
   children: React.ReactNode;
   placeholder?: string;
   description?: string;
+  defaultInputValue?: string;
 };
 
-export function ComboBox({ label, placeholder, description, children }: Props) {
+export function ComboBox({
+  label,
+  placeholder,
+  description,
+  defaultInputValue,
+  children,
+}: Props) {
   const hasSupport = !!description;
   return (
-    <RAComboBox menuTrigger="focus">
+    <RAComboBox defaultInputValue={defaultInputValue} menuTrigger="focus">
       <div className="combobox-field__wrapper">
         <fieldset className="combobox-field">
           <legend className="combobox-field__legend">
