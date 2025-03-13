@@ -5,9 +5,11 @@ import { AlarmCard } from './alarm-card';
 
 import { Button } from '../../../components/button/button';
 import { AppShell } from '../../components/app-shell/app-shell';
+import { useAlarms } from '../../components/alarms-provider';
 
 export function MyAlarms() {
   const navigate = useNavigate();
+  const { alarms } = useAlarms();
   return (
     <AppShell>
       <header className="p-4 pt-14">
@@ -21,8 +23,10 @@ export function MyAlarms() {
           />
         </div>
       </header>
-      <div className="px-4 pt-7">
-        <AlarmCard />
+      <div className="px-4 pt-7 flex flex-col gap-4 pb-4">
+        {alarms.map(alarm => (
+          <AlarmCard key={alarm.id} alarm={alarm} />
+        ))}
       </div>
     </AppShell>
   );

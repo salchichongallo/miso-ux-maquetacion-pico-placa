@@ -6,20 +6,25 @@ import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
 import { Radio, RadioGroup } from '../../../components/radio';
 import { TimePicker } from '../../../components/time-picker/time-picker';
+import { useAlarms } from '../../components/alarms-provider';
 
 export function StartingDaySelector() {
   const navigate = useNavigate();
-
+  const { setAlarms } = useAlarms();
   const [day, setDay] = useState<string>(null!);
   const [confirming, setConfirming] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
+  const [notification, setNotification] = useState('');
 
   return (
     <div className="mt-4">
       <p className="text--label-large mb-1">Selecciona el día de inicio</p>
       <RadioGroup
         value={day}
-        onChange={setDay}
+        onChange={value => {
+          setNotification(value);
+          setDay(value);
+        }}
         label="Selecciona el día de inicio"
         name="startingDay"
       >
@@ -75,7 +80,16 @@ export function StartingDaySelector() {
         buttons={[
           () => (
             <Button
-              onPress={() => navigate('/alarmas/mis-alarmas')}
+              onPress={() => {
+                setAlarms(items => [
+                  ...items,
+                  {
+                    id: (items.length + 1).toString(),
+                    type: notification,
+                  },
+                ]);
+                navigate('/alarmas/mis-alarmas');
+              }}
               text="Continuar"
             />
           ),

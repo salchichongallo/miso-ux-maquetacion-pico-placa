@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Modal } from '../../../components/modal/modal';
 import { Button } from '../../../components/button/button';
+import { useAlarms } from '../../components/alarms-provider';
 import { AppShell } from '../../components/app-shell/app-shell';
 import { TimePicker } from '../../../components/time-picker/time-picker';
 
@@ -13,8 +14,10 @@ import { NotificationTypesSelector } from './notification-types-selector';
 
 export function RegisterAlarmPage() {
   const navigate = useNavigate();
+  const { setAlarms } = useAlarms();
   const [opened, setOpened] = useState(false);
   const [modal, setModal] = useState<string>(null!);
+  const [notification, setNotification] = useState('');
   return (
     <AppShell>
       <div className="pt-14">
@@ -33,6 +36,7 @@ export function RegisterAlarmPage() {
                 onChange={value => {
                   setModal(value);
                   setOpened(true);
+                  setNotification(value);
                 }}
               />
               {modal === 'start-of-week' && (
@@ -79,7 +83,16 @@ export function RegisterAlarmPage() {
             buttons={[
               () => (
                 <Button
-                  onPress={() => navigate('/alarmas/mis-alarmas')}
+                  onPress={() => {
+                    setAlarms(items => [
+                      ...items,
+                      {
+                        id: (items.length + 1).toString(),
+                        type: notification,
+                      },
+                    ]);
+                    navigate('/alarmas/mis-alarmas');
+                  }}
                   text="Continuar"
                 />
               ),
