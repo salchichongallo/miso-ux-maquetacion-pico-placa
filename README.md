@@ -1,6 +1,6 @@
 # MISO UX - Maquetación Alarmas Pico Placa
 
-### Prerequisitos
+### Prerrequisitos
 
 Para desarrollar y compilar este projecto, necesitas tener configurado las siguientes heerramientas:
 
@@ -8,6 +8,26 @@ Para desarrollar y compilar este projecto, necesitas tener configurado las sigui
 2. [Android Studio](https://developer.android.com/studio)
 3. Android SDK
 4. Al menos un emulador de Android o un dispositivo físico
+
+### Estructura de carpetas
+
+```bash
+.
+├── android
+│   └── app
+│       └── build
+│           └── outputs
+│               └── apk
+│                   └── debug  # Carpeta donde estará el APK después de compilar la app móvil
+├── dist
+│   ├── web     # Compilados estáticos de la aplicación web
+│   └── mobile  # Compilados estáticos de la aplicación móvil
+└── src
+    ├── assets      # Recursos estáticos (fuentes, imágenes, ilustraciones, etc.)
+    ├── components  # Componentes del sistema de diseño
+    ├── mobile      # Código fuente de la aplicación móvil
+    └── web         # Código fuente de la aplicación web
+```
 
 ## Aplicación móvil
 
