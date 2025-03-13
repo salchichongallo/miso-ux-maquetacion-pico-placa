@@ -88,7 +88,7 @@ export function StartingDaySelector() {
                     type: notification,
                   },
                 ]);
-                navigate('/alarmas/mis-alarmas');
+                navigate('/alarmas');
               }}
               text="Continuar"
             />

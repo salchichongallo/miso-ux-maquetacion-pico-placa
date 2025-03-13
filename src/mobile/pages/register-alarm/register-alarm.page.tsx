@@ -91,7 +91,7 @@ export function RegisterAlarmPage() {
                         type: notification,
                       },
                     ]);
-                    navigate('/alarmas/mis-alarmas');
+                    navigate('/alarmas');
                   }}
                   text="Continuar"
                 />

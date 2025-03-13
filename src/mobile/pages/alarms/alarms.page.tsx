@@ -1,13 +1,22 @@
 import { MdAdd } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
+import { MyAlarms } from '../my-alarms/my-alarms';
 import { Button } from '../../../components/button/button';
+import { useAlarms } from '../../components/alarms-provider';
 import { AppShell } from '../../components/app-shell/app-shell';
 
 import { NotificationPictogram } from './notification-pictogram';
 
 export function AlarmsPage() {
   const navigate = useNavigate();
+
+  const { alarms } = useAlarms();
+
+  if (alarms.length > 0) {
+    return <MyAlarms />;
+  }
+
   return (
     <AppShell className="flex flex-col h-screen">
       <div className="flex flex-col justify-center items-center h-full p-4">
