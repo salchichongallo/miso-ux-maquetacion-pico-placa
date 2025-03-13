@@ -19,6 +19,7 @@
     "android:build": "cd android && ./gradlew assembleDebug && cd .."
   },
   "dependencies": {
+    "@capacitor-community/safe-area": "7.0.0-alpha.1",
     "@capacitor/android": "7.0.1",
     "@capacitor/core": "7.0.1",
     "@capacitor/ios": "7.0.1",

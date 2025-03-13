@@ -14,9 +14,21 @@ type Props = {
 
 export function AppShell({ children, className }: Props) {
   return (
-    <div style={{ paddingBottom: '5rem' }} className={className}>
+    <div
+      style={{
+        paddingBottom: '5rem',
+        paddingTop: 'var(--safe-area-inset-top)',
+      }}
+      className={className}
+    >
       {children}
-      <div style={{ position: 'fixed', bottom: 0, width: '100%' }}>
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          width: '100%',
+        }}
+      >
         <NavigationBar>
           <NavigationItem to="/inicio" text="Inicio" icon={MdStarBorder} />
           <NavigationItem

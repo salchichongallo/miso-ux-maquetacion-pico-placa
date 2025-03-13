@@ -9,6 +9,7 @@ export function NavigationBar({ children }: Props) {
       style={{
         boxShadow: 'var(--elevation--1)',
         background: 'var(--surface-container)',
+        paddingBottom: 'var(--safe-area-inset-bottom)',
       }}
     >
       {children}
