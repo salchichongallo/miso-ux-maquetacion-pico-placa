@@ -172,3 +172,19 @@
 .segment-literal {
   display: none;
 }
+
+.time-picker--hide-period {
+  min-width: 20.5rem;
+}
+
+.time-picker--hide-period .my-date-input__container {
+  flex: 1;
+}
+
+.time-picker--hide-period .segment-input {
+  width: 100%;
+}
+
+.time-picker--hide-period .segment-day-period {
+  display: none;
+}

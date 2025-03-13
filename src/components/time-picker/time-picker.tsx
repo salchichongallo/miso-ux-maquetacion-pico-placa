@@ -7,6 +7,7 @@ import {
   TimeField as RATimeField,
   Form,
 } from 'react-aria-components';
+import clsx from 'clsx';
 import { useState } from 'react';
 import { Time } from '@internationalized/date';
 
@@ -26,6 +27,7 @@ type Props = {
   onOpenChange?: (isOpen: boolean) => unknown;
   initialTime: Time | null;
   onOk: (params: OkParams) => void;
+  hidePeriod?: boolean;
 };
 
 export function TimePicker({
@@ -35,6 +37,7 @@ export function TimePicker({
   onOpenChange,
   initialTime,
   onOk,
+  hidePeriod,
 }: Props) {
   const [time, setTime] = useState<Time | null>(initialTime);
   return (
@@ -46,7 +49,12 @@ export function TimePicker({
       className="time-picker-overlay"
     >
       <RAModal className="time-picker__container">
-        <Dialog role="alertdialog" className="time-picker">
+        <Dialog
+          role="alertdialog"
+          className={clsx('time-picker', {
+            'time-picker--hide-period': hidePeriod,
+          })}
+        >
           {({ close }) => (
             <Form
               onSubmit={event => {
