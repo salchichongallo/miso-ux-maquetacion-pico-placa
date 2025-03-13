@@ -101,7 +101,7 @@ export function RegisterAlarmPage() {
           <TimePicker
             title="Indica un tiempo"
             isOpen={opened && modal === 'before-begin'}
-            // TODO: hide am/pm and change labels
+            hidePeriod
             initialTime={null}
             onOpenChange={isOpen => {
               if (!isOpen) {
