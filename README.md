@@ -49,6 +49,12 @@ Para ejecutar la app de Android, ejecuta los siguientes comandos:
 
 (Opcional) Puedes generar el APK ejecutando `npm run android:build`. El archivo `app-debug.apk` se generará en el directorio `android/app/build/outputs/apk/debug/`.
 
+### Ejecutar en iOS
+
+1. `npm run build:mobile`
+2. `npm run sync:ios`
+3. `npm run ios`
+
 ## Web
 
 ### Comenzar

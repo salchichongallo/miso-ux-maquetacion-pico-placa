@@ -16,7 +16,10 @@
     "build": "npm-run-all build:*",
     "open:android": "cap open android",
     "android": "cap run android",
-    "android:build": "cd android && ./gradlew assembleDebug && cd .."
+    "android:build": "cd android && ./gradlew assembleDebug && cd ..",
+    "sync:ios": "cap sync ios",
+    "open:ios": "cap open ios",
+    "ios": "cap run ios"
   },
   "dependencies": {
     "@capacitor-community/safe-area": "7.0.0-alpha.1",
