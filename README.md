@@ -1,36 +1,43 @@
 # MISO UX - Maquetación Alarmas Pico Placa
 
-## Mobile
+### Prerequisitos
 
-### Getting Started
+Para desarrollar y compilar este projecto, necesitas tener configurado las siguientes heerramientas:
 
-1. Install Node.js v20 or superior
-2. Install dependencies: `npm install`
-3. Run dev server: `npm run mobile`
-4. Open `http://localhost:5173`
+1. [Node.js >= 20](https://nodejs.org/)
+2. [Android Studio](https://developer.android.com/studio)
+3. Android SDK
+4. Al menos un emulador de Android o un dispositivo físico
 
-### Running on Android
+## Aplicación móvil
 
-API 23+ (Android 6 or later) is supported.
+### Comenzar
 
-To run the App on Android, run the following commands:
+1. Instalar dependencias: `npm install`
+2. Correr el servidor de desarrollo: `npm run mobile`
+3. Abrir la dirección `http://localhost:5173` en un navegador
 
-1. `npm run build`
+### Ejecutar en Android
+
+API 23+ (Android 6 o superior) es soportada.
+
+Para ejecutar la app de Android, ejecuta los siguientes comandos:
+
+1. `npm run build:mobile`
 2. `npm run sync`
 3. `npm run android`
 
-(Optional) To generate a release APK you can run `npm run android:build`. The `app-debug.apk` file will be generated in the `android/app/build/outputs/apk/debug/` directory.
+(Opcional) Puedes generar el APK ejecutando `npm run android:build`. El archivo `app-debug.apk` se generará en el directorio `android/app/build/outputs/apk/debug/`.
 
 ## Web
 
-### Getting Started
+### Comenzar
 
-1. Install Node.js v20 or superior
-2. Install dependencies: `npm install`
-3. Run dev server: `npm run web`
-4. Open `http://localhost:5173`
+1. Instalar dependencias: `npm install`. Si ya hizo este paso para móvil, puede omitirlo
+2. Correr el servidor de desarrollo: `npm run web`
+3. Abrir la dirección `http://localhost:5173` en un navegador
 
-### Building the web
+### Compilar la aplicación web
 
-1. `npm run build`
-2. Files will be generated in the `dist/web` directory.
+1. Ejecutar: `npm run build:web`
+2. Los archivos serán generados en el directorio `dist/web`
