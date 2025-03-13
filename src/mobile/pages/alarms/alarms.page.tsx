@@ -1,7 +1,7 @@
 import { MdAdd } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
-import { MyAlarms } from '../my-alarms/my-alarms';
+import { MyAlarmsPage } from '../my-alarms/my-alarms.page';
 import { Button } from '../../../components/button/button';
 import { useAlarms } from '../../components/alarms-provider';
 import { AppShell } from '../../components/app-shell/app-shell';
@@ -14,7 +14,7 @@ export function AlarmsPage() {
   const { alarms } = useAlarms();
 
   if (alarms.length > 0) {
-    return <MyAlarms />;
+    return <MyAlarmsPage />;
   }
 
   return (

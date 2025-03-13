@@ -7,7 +7,7 @@ import { Button } from '../../../components/button/button';
 import { AppShell } from '../../components/app-shell/app-shell';
 import { useAlarms } from '../../components/alarms-provider';
 
-export function MyAlarms() {
+export function MyAlarmsPage() {
   const navigate = useNavigate();
   const { alarms } = useAlarms();
   return (
