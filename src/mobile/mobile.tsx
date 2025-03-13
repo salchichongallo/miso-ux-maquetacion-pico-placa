@@ -5,6 +5,7 @@ import { HomePage } from './pages/home/home.page';
 import { AlarmsPage } from './pages/alarms/alarms.page';
 import { RegisterAlarmPage } from './pages/register-alarm/register-alarm.page';
 import { AlarmsProvider } from './components/alarms-provider';
+import { VehiclesPage } from './pages/vehicles/vehicles.page';
 
 export function Mobile() {
   return (
@@ -16,6 +17,7 @@ export function Mobile() {
           <Route path="/inicio" element={<HomePage />} />
           <Route path="/alarmas" element={<AlarmsPage />} />
           <Route path="/alarmas/registrar" element={<RegisterAlarmPage />} />
+          <Route path="/vehiculos" element={<VehiclesPage />} />
         </Routes>
       </BrowserRouter>
     </AlarmsProvider>
