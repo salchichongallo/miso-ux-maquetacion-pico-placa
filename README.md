@@ -1,5 +1,8 @@
 # MISO UX - Maquetación Alarmas Pico Placa
 
+> [!NOTE]
+> Tutor: Puedes encontrar el APK y el sitio web en la página de [releases](releases).
+
 ### Prerrequisitos
 
 Para desarrollar y compilar este projecto, necesitas tener configurado las siguientes heerramientas:
@@ -50,6 +53,8 @@ Para ejecutar la app de Android, ejecuta los siguientes comandos:
 (Opcional) Puedes generar el APK ejecutando `npm run android:build`. El archivo `app-debug.apk` se generará en el directorio `android/app/build/outputs/apk/debug/`.
 
 ### Ejecutar en iOS
+
+Nota: Para ejecutar la aplicación en iOS necesitas tener macOS y Xcode instalado.
 
 1. `npm run build:mobile`
 2. `npm run sync:ios`
