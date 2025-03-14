@@ -3,6 +3,8 @@
 > [!NOTE]
 > Tutor: Puedes encontrar el APK y el sitio web en la página de [releases](releases).
 
+[Ver video de aplicación móvil](https://uniandes-my.sharepoint.com/:v:/g/personal/l_bogotab_uniandes_edu_co/EXoNTz_I7cVLtyG6upiyNAoB38MxciY-h9UdVBQ-inHKdg?e=xm8fqA)
+
 ### Prerrequisitos
 
 Para desarrollar y compilar este projecto, necesitas tener configurado las siguientes heerramientas:
