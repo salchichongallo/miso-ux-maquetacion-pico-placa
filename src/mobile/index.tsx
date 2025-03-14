@@ -16,4 +16,4 @@ const renderApp = () =>
 
 ScreenOrientation.lock({ orientation: 'portrait' })
   .then(renderApp)
-  .catch(error => alert(`Error: ${error}`));
+  .catch(renderApp);
